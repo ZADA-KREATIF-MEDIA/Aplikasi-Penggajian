@@ -16,9 +16,10 @@
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/', function () {
-	    return view('welcome');
-	});
+	// Route::get('/', function () {
+	//     return view('welcome');
+	// });
+	Route::get('/','Auth\LoginController@index');
 
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('divisi', 'DivisiController');
