@@ -67,6 +67,8 @@
                                 <td>{!! $row->status !!}</td>
                                 <td>{!! $row->agama !!}</td>
                                 <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editKaryawanModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKaryawanModal{!!$row->id!!}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -112,6 +114,50 @@
         </div>
     </div>
 </div>
+@foreach ($karyawan as $key => $row)
+<div class="modal fade" id="editKaryawanModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largemodalLabel">Edit Karyawan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!! Form::model($row, ['route' => ['karyawan.update', $row->id], 'method'=>'patch', 'files'=> true, 'id'=>'update'.$row->id]) !!}
+                @include('karyawan.form')
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('update{!! $row->id !!}').submit()">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="hapusKaryawanModal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Hapus Karyawan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['route'=>['karyawan.destroy', $row->id], 'method'=>'delete', 'id'=>'hapus'.$row->id]) !!}
+                <p>Yakin akan menghapus karyawan {!! $row->name !!} ?</p>
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('hapus{{$row->id}}').submit();">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 @push('addon-script')
 <script src="{{url('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>

@@ -48,13 +48,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('divisi.index') }}" class="nav-link">
+                            <a href="{{ route('divisi.index') }}" class="nav-link @yield('divisi')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Divisi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('jabatan.index') }} @yield('jabatan')" class="nav-link">
+                            <a href="{{ route('jabatan.index') }} " class="nav-link @yield('jabatan')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Jabatan</p>
                             </a>
