@@ -1,186 +1,183 @@
 @extends('layouts.app')
-
+@section('title','Master Data | Karyawan')
+@section('master-data','menu-is-opening menu-open')
+@section('karyawan','active')
+@push('addon-style')
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+@endpush
 @section('content')
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="{{ url('home') }}">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Data Absensi</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">absensi</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Data absensi</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title col-12">
+                        Data absensi
+                        <button class="btn btn-success btn-sm float-right text-uppercase" data-toggle="modal" data-target="#tambahabsensiModal"><i class="fa fa-plus"></i>tambah</button>
                     </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- WELCOME-->
-            <section class="welcome p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="title-4">Data Absensi <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#largemodal"><i class="zmdi zmdi-plus"></i>tambah</button>
-                            </h1>
-                        </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    @if (Session::has('message'))
+                    <div class="alert alert-success">
+                        {!! Session::get('message') !!}
                     </div>
+                    @endif
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>nip karyawan (nama)</th>
+                                <th>tanggal</th>
+                                <th>status</th>
+                                <th>jam masuk</th>
+                                <th>jam keluar</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($absensi as $key => $row)
+                            <tr>
+                                <td>{!! $key+1 !!}</td>
+                                    <td>{!! $row->user->nip !!} ({!! $row->user->name !!})</td>
+                                    <td>
+                                        <span class="block-email">{!! $row->tanggal !!}</span>
+                                    </td>
+                                    <td class="desc">{{ $row->status }}</td>
+                                    <td>{!! $row->jam_masuk !!}</td>
+                                    <td>{!! $row->jam_keluar !!}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editabsensiModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusabsensiModal{!!$row->id!!}"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>id</th>
+                                <th>nip karyawan (nama)</th>
+                                <th>tanggal</th>
+                                <th>status</th>
+                                <th>jam masuk</th>
+                                <th>jam keluar</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <div class="modal fade" id="tambahabsensiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah absensi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            <hr class="line-seprate">
-            </section>
-            <!-- END WELCOME-->
-
-            
-            <!-- DATA TABLE-->
-            <section class="p-t-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                                @if (Session::has('message'))
-                                    <div class="alert alert-danger">
-                                        {!! Session::get('message') !!}
-                                    </div>
-                                @endif
-                            
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>id</th>
-                                                <th>nip karyawan (nama)</th>
-                                                <th>tanggal</th>
-                                                <th>status</th>
-                                                <th>jam masuk</th>
-                                                <th>jam keluar</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($absensi as $key => $row)
-                                            
-                                            <tr class="tr-shadow">
-                                                <td>{!! $key+1 !!}</td>
-                                                <td>{!! $row->user->nip !!} ({!! $row->user->name !!})</td>
-                                                <td>
-                                                    <span class="block-email">{!! $row->tanggal !!}</span>
-                                                </td>
-                                                <td class="desc">{{ $row->status }}</td>
-                                                <td>{!! $row->jam_masuk !!}</td>
-                                                <td>{!! $row->jam_keluar !!}</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit" data-toggle="modal" data-target="#largemodal{!!$row->id!!}"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete" data-toggle="modal" data-target="#staticModal{!!$row->id!!}"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-
-                                            <!-- modal large -->
-                                            <div class="modal fade" id="largemodal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="largemodalLabel">Edit Absensi</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        {!! Form::model($row, ['route' => ['absensi.update', $row->id], 'method'=>'patch', 'files'=> true, 'id'=>'update'.$row->id]) !!}
-                                                            @include('absensi.form')
-                                                        {!! Form::close() !!}
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('update{!! $row->id !!}').submit()">Simpan</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end modal large -->
-
-                                            <!-- modal static -->
-                                            <div class="modal fade" id="staticModal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
-                                             data-backdrop="static">
-                                                <div class="modal-dialog modal-sm" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticModalLabel">Hapus Data Absensi</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            {!! Form::open(['route'=>['absensi.destroy', $row->id], 'method'=>'delete', 'id'=>'hapus'.$row->id]) !!}
-                                                            <p>Yakin akan menghapus data absensi {!! $row->name !!} ?</p>
-                                                            {!! Form::close() !!}
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('hapus{{$row->id}}').submit();">Confirm</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end modal static -->
-
-                                            @endforeach
-                                            
-                                            <!-- modal large -->
-                                            <div class="modal fade" id="largemodal" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="largemodalLabel">Tambah Absensi</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        {!! Form::open(['route' => 'absensi.store', 'method'=>'POST', 'files'=> true, 'id'=>'store']) !!}
-                                                            @include('absensi.form')
-                                                        {!! Form::close() !!}
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('store').submit()">Simpan</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end modal large -->
-            
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE -->
-                        </div>
-                    </div>
+                <div class="modal-body">
+                    {!! Form::open(['route' => 'absensi.store', 'method'=>'POST', 'files'=> true, 'id'=>'store']) !!}
+                    @include('absensi.form')
+                    {!! Form::close() !!}
                 </div>
-            </section>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('store').submit()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @foreach ($absensi as $key => $row)
+    <div class="modal fade" id="editabsensiModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largemodalLabel">Edit absensi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::model($row, ['route' => ['absensi.update', $row->id], 'method'=>'patch', 'files'=> true, 'id'=>'update'.$row->id]) !!}
+                    @include('absensi.form')
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('update{!! $row->id !!}').submit()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="hapusabsensiModal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Hapus absensi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(['route'=>['absensi.destroy', $row->id], 'method'=>'delete', 'id'=>'hapus'.$row->id]) !!}
+                    <p>Yakin akan menghapus absensi {!! $row->name !!} ?</p>
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('hapus{{$row->id}}').submit();">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 
-            
 
-@endsection
+
+@push('addon-script')
+<script src="{{url('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+</script>
+@endpush

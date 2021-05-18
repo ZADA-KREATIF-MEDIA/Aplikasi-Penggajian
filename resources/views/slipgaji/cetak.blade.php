@@ -6,8 +6,9 @@
 <body onload="window.print()">
 	<center>
 	<div class="text-center">
-		<img src="{{ asset('images/barry.png') }}" width="300px"> <br>
-		{!! config('app.name') !!} 
+		
+		<h3>CV BANYU BIRU</h3>
+		<h4>SLIP GAJI KARYAWAN</h4>
 	</div>
 	</center>
 
