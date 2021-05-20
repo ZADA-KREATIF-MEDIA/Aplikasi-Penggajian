@@ -1,189 +1,168 @@
 @extends('layouts.app')
-
+@section('title','Master Data | Role')
+@section('role','active')
+@push('addon-style')
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+@endpush
 @section('content')
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="{{ url('home') }}">Admin</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Roles & Role</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Role</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Data Role</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title col-12">
+                        Data Role
+                        <button class="btn btn-success btn-sm float-right text-uppercase" data-toggle="modal" data-target="#tambahRoleModal"><i class="fa fa-plus"></i>tambah</button>
                     </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- PAGE CONTENT-->
-            <div class="page-container3">
-                <section class="alert-wrap p-b-30">
-                    <div class="container">
-                        <!-- ALERT-->
-                        @if(Session::has('message'))
-                            <div class="alert au-alert-success alert-dismissible fade show au-alert au-alert--70per" role="alert">
-                                <i class="zmdi zmdi-check-circle"></i>
-                                <span class="content">{!! Session::get('message') !!}</span>
-                                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">
-                                        <i class="zmdi zmdi-close-circle"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        @endif
-                        
-                        <!-- END ALERT-->
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    @if (Session::has('message'))
+                    <div class="alert alert-success">
+                        {!! Session::get('message') !!}
                     </div>
-                </section>
-                <section>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3">
-                                <!-- MENU SIDEBAR-->
-                                @include('admin.layouts.sidebar', ['linkrole' => 'active'])
-                                <!-- END MENU SIDEBAR-->
-                            </div>
-                            <div class="col-xl-9">
-                                <!-- PAGE CONTENT-->
-                                <div class="page-content">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <!-- RECENT REPORT-->
-                                            <div class="user-data m-b-30">
-                                                <h3 class="title-3 m-b-30">
-                                                    <i class="fas fa-chart-bar"></i>Role <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#largemodal"><i class="zmdi zmdi-plus"></i>tambah</a></h3>
-                                                <div class="table-responsive table-data">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <td>id</td>
-                                                                <td>name</td>
-                                                                <td></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($roles as $key => $row)
-                                                            <tr>
-                                                                <td>{!! $key+1 !!}</td>
-                                                                <td>
-                                                                    <div class="table-data__info">
-                                                                        <h6>{!! $row->name !!}</h6>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="more" data-toggle="modal" data-target="#largemodal{!!$row->id!!}">
-                                                                        <i class="zmdi zmdi-edit" data-toggle="tooltip" data-placement="top" title="Edit" ></i>
-                                                                    </span>
-                                                                    <span class="more" data-toggle="modal" data-target="#staticModal{!!$row->id!!}">
-                                                                        <i class="zmdi zmdi-delete" data-toggle="tooltip" data-placement="top" title="Delete" ></i>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-
-                                                            <!-- modal large -->
-                                                            <div class="modal fade" id="largemodal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-lg" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="largemodalLabel">Edit Role</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                        {!! Form::model($row, ['route' => ['roles.update', $row->id], 'method'=>'patch', 'id'=>'update'.$row->id]) !!}
-                                                                            @include('admin.role.form')
-                                                                        {!! Form::close() !!}
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('update{!! $row->id !!}').submit()">Simpan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- modal static -->
-                                                            <div class="modal fade" id="staticModal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true"
-                                                             data-backdrop="static">
-                                                                <div class="modal-dialog modal-sm" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="staticModalLabel">Hapus Role</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            {!! Form::open(['route'=>['roles.destroy', $row->id], 'method'=>'delete', 'id'=>'hapus'.$row->id]) !!}
-                                                                            <p>Yakin akan menghapus role {!! $row->name !!} ?</p>
-                                                                            {!! Form::close() !!}
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('hapus{{$row->id}}').submit();">Confirm</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- end modal static -->
-
-
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <!-- END RECENT REPORT-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END PAGE CONTENT-->
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    @endif
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <td>no</td>
+                                <td>name</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($roles as $key => $row)
+                            <tr>
+                                <td>{!! $key+1 !!}</td>
+                                <td>{!! $row->name !!}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editRoleModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusRoleModal{!!$row->id!!}"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>no</td>
+                                <td>name</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.card-body -->
             </div>
-            <!-- END PAGE CONTENT  -->
-
-            <!-- modal large -->
-            <div class="modal fade" id="largemodal" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="largemodalLabel">Tambah Role</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        {!! Form::open(['route' => 'roles.store', 'method'=>'POST', 'id'=>'store']) !!}
-                            @include('admin.role.form')
-                        {!! Form::close() !!}
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('store').submit()">Simpan</button>
-                        </div>
-                    </div>
+            <!-- /.card -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <div class="modal fade" id="tambahRoleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(['route' => 'roles.store', 'method'=>'POST', 'id'=>'store']) !!}
+                    @include('admin.role.form')
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('store').submit()">Simpan</button>
                 </div>
             </div>
-            <!-- end modal large -->
-@endsection
+        </div>
+    </div>
+    @foreach ($roles as $key => $row)
+    <div class="modal fade" id="editRoleModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="largemodalLabel">Edit Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::model($row, ['route' => ['roles.update', $row->id], 'method'=>'patch', 'id'=>'update'.$row->id]) !!}
+                    @include('admin.role.form')
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('update{!! $row->id !!}').submit()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="hapusRoleModal{!!$row->id!!}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Hapus Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(['route'=>['roles.destroy', $row->id], 'method'=>'delete', 'id'=>'hapus'.$row->id]) !!}
+                    <p>Yakin akan menghapus role {!! $row->name !!} ?</p>
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();getElementById('hapus{{$row->id}}').submit();">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+
+
+
+@push('addon-script')
+<script src="{{url('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+</script>
+@endpush

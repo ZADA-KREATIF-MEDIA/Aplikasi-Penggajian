@@ -42,7 +42,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('pengguna.index') }}" class="nav-link">
+                            <a href="{{ route('pengguna.index') }}" class="nav-link @yield('pengguna')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pengguna</p>
                             </a>
@@ -66,19 +66,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('absensi.index') }}" class="nav-link">
+                            <a href="{{ route('absensi.index') }}" class="nav-link @yield('absensi')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Absensi</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('pinjaman.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pinjaman</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a href="{{ route('lembur.index') }}" class="nav-link">
+                            <a href="{{ route('lembur.index') }}" class="nav-link @yield('lembur')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Lembur</p>
                             </a>
@@ -86,14 +86,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('penggajian.index') }}" class="nav-link">
+                    <a href="{{ route('penggajian.index') }}" class="nav-link @yield('penggajian')">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>
                             Penggajian
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @yield('laporan')">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -103,19 +103,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('laporan.index') }}" class="nav-link">
+                            <a href="{{ route('laporan.index') }}" class="nav-link @yield('lap_penggajian')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Penggajian</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('jurnalUmum.index') }}" class="nav-link">
+                            <a href="{{ route('jurnalUmum.index') }}" class="nav-link @yield('lap_jurnal_umum')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Jurnal Umum</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('bukuBesar.index') }}" class="nav-link">
+                            <a href="{{ route('bukuBesar.index') }}" class="nav-link @yield('lap_buku_besar')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Buku Besar</p>
                             </a>
@@ -123,7 +123,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('roles.index') }}" class="nav-link">
+                    <a href="{{ route('roles.index') }}" class="nav-link @yield('role')">
                         <i class="nav-icon fas fa-user-shield"></i>
                         <p>
                             Roles & Permission

@@ -1,7 +1,6 @@
 @extends('layouts.app')
-@section('title','Master Data | Karyawan')
-@section('master-data','menu-is-opening menu-open')
-@section('karyawan','active')
+@section('title','Master Data | Penggajian')
+@section('penggajian','active')
 @push('addon-style')
 <link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{url('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -35,8 +34,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title col-12">
-                       Penggajian Karyawan - Cetak Slip Gaji
-                        
+                        Penggajian Karyawan - Cetak Slip Gaji
+
                     </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -64,21 +63,20 @@
                                 <td>{!! Carbon\Carbon::now()->format('F Y') !!}</td>
                                 <td class="text-center">
                                     <div class="table-data-feature">
-                                        
-                                        <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Slip aji" href="{{ route('slipgaji.show', $row->id) }}">
-                                        Cetak
+                                        <a class="btn btn-danger" target="_blank" data-toggle="tooltip" data-placement="top" title="Slip aji" href="{{ route('slipgaji.show', $row->id) }}">
+                                            Cetak
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                           
+
                         </tbody>
                         <tfoot>
                             <th>id</th>
-                                <th>nip karyawan (nama)</th>
-                                <th>tanggal</th>
-                                <th>periode</th>
-                                <th>Aksi</th>
+                            <th>nip karyawan (nama)</th>
+                            <th>tanggal</th>
+                            <th>periode</th>
+                            <th>Aksi</th>
                         </tfoot>
                     </table>
                 </div><!-- /.card-body -->
@@ -86,8 +84,8 @@
             <!-- /.card -->
         </div><!-- /.container-fluid -->
     </section>
-       <!-- modal large -->
-       <div class="modal fade" id="largemodal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
+    <!-- modal large -->
+    <div class="modal fade" id="largemodal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -111,15 +109,15 @@
     </div>
     <!-- end modal large -->
 
-  
+
     @empty
     Nodata
     @endforelse
-    
-</div>
-          
 
-            
+</div>
+
+
+
 
 @endsection
 @push('addon-script')

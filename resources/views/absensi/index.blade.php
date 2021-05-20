@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title','Master Data | Karyawan')
+@section('title','Master Data | Absensi')
 @section('master-data','menu-is-opening menu-open')
-@section('karyawan','active')
+@section('absensi','active')
 @push('addon-style')
 <link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{url('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -60,9 +60,7 @@
                             <tr>
                                 <td>{!! $key+1 !!}</td>
                                     <td>{!! $row->user->nip !!} ({!! $row->user->name !!})</td>
-                                    <td>
-                                        <span class="block-email">{!! $row->tanggal !!}</span>
-                                    </td>
+                                    <td>{!! $row->tanggal !!}</td>
                                     <td class="desc">{{ $row->status }}</td>
                                     <td>{!! $row->jam_masuk !!}</td>
                                     <td>{!! $row->jam_keluar !!}</td>

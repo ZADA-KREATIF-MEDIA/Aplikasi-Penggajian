@@ -1,106 +1,108 @@
 @extends('layouts.app')
-
+@section('title','Laporan | Lapora Penggajian')
+@section('laporan','menu-is-opening menu-open')
+@section('lap_penggajian','active')
+@push('addon-style')
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{url('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+@endpush
 @section('content')
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="{{ url('home') }}">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Laporan Penggajian</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Jabatan</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Laporan Penggajian</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title col-12">
+                        Laporan Penggajian
+                        <form action="{{ route('laporan.create') }}" method="get" class="float-right">
+                            <label for="tanggal_awal">Tanggal Awal</label>
+                            <input type="date" name="tanggal_awal" class="">
+                            <label for="tanggal_akhir">Tanggal Akhir</label>
+                            <input type="date" name="tanggal_akhir" class="">
+                            <input type="submit" value="Cetak">
+                        </form>
                     </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- WELCOME-->
-            <section class="welcome p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="title-4">Laporan Penggajian </h1>
-                        </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    @if (Session::has('message'))
+                    <div class="alert alert-success">
+                        {!! Session::get('message') !!}
                     </div>
-                </div>
-            <hr class="line-seprate">
-            </section>
-            <!-- END WELCOME-->
-
-            <!-- DATA TABLE-->
-            <section class="p-t-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="">
-                                <form action="{{ route('laporan.create') }}" method="get">
-                                    <label for="tanggal_awal">Tanggal Awal</label>
-                                    <input type="date" name="tanggal_awal" class="">
-                                    <label for="tanggal_akhir">Tanggal Akhir</label>
-                                    <input type="date" name="tanggal_akhir" class="">
-                                    <input type="submit" value="Cetak">
-                                </form>
-                                </div>
-                            <div class="table-responsive table-responsive-data2">
-                                <table class="table table-data2">
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>name</th>
-                                            <th>tanggal</th>
-                                            <th>gaji bersih</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($laporan as $key => $row)
-                                        
-                                        <tr class="tr-shadow">
-                                            <td>{!! $loop->iteration !!}</td>
-                                            <td>{!! $row->user->name !!}</td>
-                                            <td>{!! $row->created_at !!}</td>
-                                            <td>{!! number_format($row->gaji_bersih) !!}</td>
-                                            {{--  <td>
-                                                <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit" data-toggle="modal" data-target="#largemodal{!!$row->id!!}"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete" data-toggle="modal" data-target="#staticModal{!!$row->id!!}"></i>
-                                                    </button>
-                                                </div>
-                                            </td> --}}
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        @endforeach
-                                        
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END DATA TABLE -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            
-
+                    @endif
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>no</th>
+                                <th>name</th>
+                                <th>tanggal</th>
+                                <th>gaji bersih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($laporan as $key => $row)
+                            <tr>
+                                <td>{!! $loop->iteration !!}</td>
+                                <td>{!! $row->user->name !!}</td>
+                                <td>{!! $row->created_at !!}</td>
+                                <td>{!! number_format($row->gaji_bersih) !!}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>no</th>
+                                <th>name</th>
+                                <th>tanggal</th>
+                                <th>gaji bersih</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 @endsection
+@push('addon-script')
+<script src="{{url('adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{url('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+</script>
+@endpush
