@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Lembur;
 
 class SlipGajiController extends Controller
 {
@@ -49,6 +50,7 @@ class SlipGajiController extends Controller
     public function show($id)
     {
         $data['karyawan'] = User::find($id);
+        $data['lembur'] = Lembur::find($id);
 
         return view('slipgaji.cetak', $data);
     }

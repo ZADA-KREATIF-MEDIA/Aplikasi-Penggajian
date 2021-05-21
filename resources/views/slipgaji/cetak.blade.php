@@ -65,6 +65,12 @@
 					<td></td>
 				</tr>
 				<tr>
+					<td>3.</td>
+					<td>Jumlah Jam Lembur </td>
+					<td align="right">{!! $lembur->lama_lembur !!} Jam</td>
+					<td></td>
+				</tr>
+				<tr>
 					<td></td>
 					<td></td>
 					<td><hr></td>
@@ -78,22 +84,12 @@
 				</tr>
 				<tr>
 					<td>4.</td>
-					<td>Pinjaman</td>
+					<td>Potongan Kehadiran</td>
 					<td align="right">Rp. {!! number_format($karyawan->pinjaman->sum('besar_pinjaman')) !!}</td>
 					<td></td>
 				</tr>
-				<tr>
-					<td>5.</td>
-					<td>PPH</td>
-					<td align="right">Rp. {!! number_format(($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->lembur()->totalLembur($karyawan->id)*$karyawan->jabatan->lembur - $karyawan->pinjaman()->totalpinjaman($karyawan->id)) * 0.05) !!}</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6.</td>
-					<td>BPJS</td>
-					<td align="right">Rp. {!! number_format(($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->lembur()->totalLembur($karyawan->id)*$karyawan->jabatan->lembur - $karyawan->pinjaman()->totalpinjaman($karyawan->id)) * 0.02) !!}</td>
-					<td></td>
-				</tr>
+				
+				
 				<tr>
 					<td></td>
 					<td></td>
