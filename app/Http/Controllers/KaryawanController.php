@@ -127,4 +127,23 @@ class KaryawanController extends Controller
             File::delete($image_path);
         }
     }
+    public function trash()
+    {
+        $pengguna = User::onlyTrashed()->get();
+    	return view('karyawan/pengguna_trash', ['pengguna' => $pengguna]);
+    }
+    public function restore($id)
+    {
+        $pengguna= User::onlyTrashed()->where('id',$id);
+    	$pengguna->restore();
+        return redirect()->route('karyawan.index');
+    }
+    public function force_delete($id)
+    {
+            
+            $pengguna= User::onlyTrashed()->where('id',$id);
+            $pengguna->forceDelete();
+    
+            return redirect()->route('karyawan.index');
+    }
 }

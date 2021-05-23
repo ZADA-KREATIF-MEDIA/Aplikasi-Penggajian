@@ -134,4 +134,6 @@ class UserController extends Controller
             File::delete($image_path);
         }
     }
+
+  
 }

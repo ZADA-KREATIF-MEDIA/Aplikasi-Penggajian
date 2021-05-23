@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('divisi', 'DivisiController');
 	Route::resource('jabatan', 'JabatanController');
 	Route::resource('pengguna', 'PenggunaController');
+
+	Route::get('/sampah-pengguna', 'KaryawanController@trash');
+	Route::get('/user-restore/{id}', 'KaryawanController@restore');
+	Route::get('/user-force-delete/{id}', 'KaryawanController@force_delete');
+	
 	Route::resource('karyawan', 'KaryawanController');
 	Route::resource('absensi', 'AbsensiController');
 	Route::resource('pinjaman', 'PinjamanController');
@@ -34,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('laporan', 'LaporanController');
 	Route::resource('jurnalUmum', 'JurnalUmumController');
 	Route::resource('bukuBesar', 'BukuBesarController');
+
 });
 Route::group(['prefix' => 'admin'], function () {
 

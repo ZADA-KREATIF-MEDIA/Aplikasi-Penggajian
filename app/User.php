@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,7 @@ class User extends Authenticatable
         'name', 'email', 'password', 'nik', 'image', 'nip', 'pendidikan', 'kota_lahir', 'tgl_lahir', 'tgl_masuk', 'jk', 'agama', 'status', 'alamat', 'foto', 'jenis_karyawan', 'divisi_id', 'jabatan_id'
     ];
 
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for arrays.
      *

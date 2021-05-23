@@ -33,9 +33,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title col-12">
-                        Data Karyawan
+                        Data Karyawan yang di hapus
                        
-                        <button class="btn btn-success btn-sm float-right text-uppercase" data-toggle="modal" data-target="#tambahKaryawanModal"><i class="fa fa-plus"></i>tambah</button>
+                       
                     </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -58,7 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($karyawan as $key => $row)
+                            @foreach ($pengguna as $key => $row)
                             <tr>
                                 <td>{!! $key+1 !!}</td>
                                 <td>{!! $row->nip !!}</td>
@@ -68,8 +68,8 @@
                                 <td>{!! $row->status !!}</td>
                                 <td>{!! $row->agama !!}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editKaryawanModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKaryawanModal{!!$row->id!!}"><i class="fa fa-trash"></i></button>
+                                    <a href="/user-restore/{{ $row->id }}" class="btn btn-primary btn-sm float-left text-uppercase" >Restore</a>
+                                    <a href="/user-force-delete/{{ $row->id }}" class="btn btn-danger btn-sm float-left text-uppercase" >Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -86,7 +86,7 @@
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
-                        <a href="{{ url('/sampah-pengguna') }}" class="btn btn-danger btn-sm float-left text-uppercase" ><i class="fa fa-trash"></i>Sampah </a>
+                 
                     </table>
                 </div><!-- /.card-body -->
             </div>
@@ -116,7 +116,7 @@
         </div>
     </div>
 </div>
-@foreach ($karyawan as $key => $row)
+@foreach ($pengguna as $key => $row)
 <div class="modal fade" id="editKaryawanModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

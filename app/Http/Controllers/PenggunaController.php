@@ -132,4 +132,6 @@ class PenggunaController extends Controller
             File::delete($image_path);
         }
     }
+
+    
 }
