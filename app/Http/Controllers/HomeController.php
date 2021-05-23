@@ -26,9 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['karyawan'] = User::role('karyawan')->orderBy('id', 'desc')->get();
+        /*$data['karyawan'] = User::role('karyawan')->orderBy('id', 'desc')->get();
         $data['divisi'] = Divisi::orderBy('id', 'desc')->get();
-        $data['jabatan'] = Jabatan::orderBy('id', 'desc')->get();
+        $data['jabatan'] = Jabatan::orderBy('id', 'desc')->get();*/
+
+        $data['karyawan'] = User::role('karyawan')->count();
+        $data['divisi'] = Divisi::count();
+        $data['jabatan'] = Jabatan::count();
 
         return view('home', $data);
     }

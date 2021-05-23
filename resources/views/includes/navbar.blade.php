@@ -9,14 +9,11 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                <i class="fas fa-user"></i>
+            <a class="nav-link text-danger" href="{{ route('logout') }}"
+                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+               Logout ( {{ Auth::user()->name  }} ) 
             </a>
         </li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -19,12 +19,12 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Admin</b>LTE</a>
+            <a href="#">CV BANYU BIRU </a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+               
 
                 {!! Form::open(['route'=>'login', 'method'=>'post']) !!}
                     <div class="input-group mb-3">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block">Masuk Sistem</button>
                     {!! Form::close() !!}
                 <!-- /.social-auth-links -->
 

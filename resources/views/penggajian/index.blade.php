@@ -62,8 +62,11 @@
                                 <td>{!! Carbon\Carbon::now()->format('F Y') !!}</td>
                                 <td class="text-center">
                                     <div class="table-data-feature">
+                                        @role('admin')
+                                        <button type="button" class="btn btn-success" onclick="event.preventDefault();getElementById('gajian{!! $row->id !!}').submit();">Validasi Gaji</button>
+                                        @endrole
                                         <a class="btn btn-danger" target="_blank" data-toggle="tooltip" data-placement="top" title="Slip aji" href="{{ route('slipgaji.show', $row->id) }}">
-                                            Cetak
+                                            Slip Gaji
                                         </a>
                                     </div>
                                 </td>
