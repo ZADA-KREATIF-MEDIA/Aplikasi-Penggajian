@@ -61,7 +61,7 @@
 				<tr>
 					<td>3.</td>
 					<td>Lembur</td>
-					<td align="right">Rp. {!! number_format($karyawan->jabatan->lembur) !!}</td>
+					<td align="right">Rp. {!! number_format($karyawan->jabatan->lembur * $lembur->lama_lembur ) !!}</td>
 					<td></td>
 				</tr>
 				<tr>
@@ -79,7 +79,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->jabatan->lembur) !!}</td>
+					<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + ($karyawan->jabatan->lembur * $lembur->lama_lembur)) !!}</td>
 					<td></td>
 				</tr>
 				<tr>
