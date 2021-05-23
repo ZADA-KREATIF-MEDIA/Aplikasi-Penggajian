@@ -114,12 +114,12 @@
                                 <p>Laporan Jurnal Umum</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('bukuBesar.index') }}" class="nav-link @yield('lap_buku_besar')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan Buku Besar</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -35,7 +35,6 @@
                 <div class="card-header">
                     <div class="card-title col-12">
                         Penggajian Karyawan - Cetak Slip Gaji
-
                     </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -69,7 +68,9 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            @empty
+                            Nodata
+                            @endforelse
                         </tbody>
                         <tfoot>
                             <th>id</th>
@@ -85,6 +86,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- modal large -->
+    @foreach ($karyawan as $key => $row)
     <div class="modal fade" id="largemodal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -107,13 +109,8 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- end modal large -->
-
-
-    @empty
-    Nodata
-    @endforelse
-
 </div>
 
 
