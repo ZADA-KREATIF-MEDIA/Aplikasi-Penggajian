@@ -61,13 +61,13 @@
 				<tr>
 					<td>3.</td>
 					<td>Lembur</td>
-					<td align="right">Rp. {!! number_format($karyawan->jabatan->lembur * $lembur->lama_lembur ) !!}</td>
+					<td align="right">Rp. {!! number_format($karyawan->jabatan->lembur * $lembur ) !!}</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>3.</td>
 					<td>Jumlah Jam Lembur </td>
-					<td align="right">{!! $lembur->lama_lembur !!} Jam</td>
+					<td align="right">{!! $lembur !!} Jam</td>
 					<td></td>
 				</tr>
 				<tr>
@@ -79,13 +79,13 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + ($karyawan->jabatan->lembur * $lembur->lama_lembur)) !!}</td>
+					<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + ($karyawan->jabatan->lembur * $lembur)) !!}</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>4.</td>
 					<td>Potongan Kehadiran</td>
-					<td align="right">Rp. {!! number_format($karyawan->pinjaman->sum('besar_pinjaman')) !!}</td>
+					<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok-($masuk*($karyawan->jabatan->gapok/26))) !!}</td>
 					<td></td>
 				</tr>
 				
@@ -99,7 +99,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td align="right">Rp. {!! number_format(($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->lembur()->totalLembur($karyawan->id)*$karyawan->jabatan->lembur - $karyawan->pinjaman()->totalpinjaman($karyawan->id) - ($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->lembur()->totalLembur($karyawan->id)*$karyawan->jabatan->lembur - $karyawan->pinjaman()->totalpinjaman($karyawan->id)) * 0.05) - ($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + $karyawan->lembur()->totalLembur($karyawan->id)*$karyawan->jabatan->lembur - $karyawan->pinjaman()->totalpinjaman($karyawan->id)) * 0.02) !!}</td>
+					<td align="right">Rp. {!! number_format(($karyawan->jabatan->gapok + $karyawan->jabatan->tunjangan + ($karyawan->jabatan->lembur * $lembur))-($karyawan->jabatan->gapok-($masuk*($karyawan->jabatan->gapok/26)))) !!}</td>
 					<td></td>
 				</tr>
 
