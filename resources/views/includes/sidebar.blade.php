@@ -114,7 +114,7 @@
                 @endrole
                 @role('karyawan')
                 <li class="nav-item">
-                    <a href="{{ route('slipgaji.index') }}" class="nav-link">
+                    <a href="{{ route('slipgaji.index') }}" class="nav-link @yield('penggajian')">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>
                             Slip Gaji
