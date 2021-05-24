@@ -43,9 +43,6 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
-                                <img src="{{ asset('images/barry.png') }}" alt="CoolAdmin">
-                            </a>
                         </div>
                         <div class="login-form">
                             {!! Form::open(['route'=>'password.email', 'method'=>'post']) !!}

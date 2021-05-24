@@ -8,7 +8,6 @@
     <body onload="window.print()">
         <center>
         <div class="text-center">
-            <img src="{{ asset('images/barry.png') }}" width="300px"> <br>
             {!! config('app.name') !!} 
         </div>
         </center>
