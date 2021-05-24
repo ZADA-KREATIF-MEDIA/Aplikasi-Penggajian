@@ -63,12 +63,7 @@
                                 <p>Data Absensi</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="{{ route('pinjaman.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Pinjaman</p>
-                            </a>
-                        </li> -->
+                       
                         <li class="nav-item">
                             <a href="{{ route('lembur.index') }}" class="nav-link @yield('lembur')">
                                 <i class="far fa-circle nav-icon"></i>
@@ -106,12 +101,6 @@
                                 <p>Laporan Jurnal Umum</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="{{ route('bukuBesar.index') }}" class="nav-link @yield('lap_buku_besar')">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Buku Besar</p>
-                            </a>
-                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item">
