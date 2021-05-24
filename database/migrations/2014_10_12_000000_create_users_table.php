@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->integer('jabatan_id');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }
