@@ -99,16 +99,6 @@
 </div>
 
 <div class="form-group">
-	{!! Form::label('image', 'Foto') !!}
-	{!! Form::file('image', ['class' => $errors->has('image') ? 'form-control is-invalid' : $errors->has('image') ? 'form-control is-invalid' : 'form-control']) !!}
-	@if ($errors->has('image'))
-	<span class="text-danger">
-		<strong>{{ $errors->first('image') }}</strong>
-	</span>
-	@endif
-</div>
-
-<div class="form-group">
 	{!! Form::label('jenis_karyawan', 'Jenis Karyawan') !!}
 	{!! Form::select('jenis_karyawan', ['Tetap'=>'Tetap', 'Sementara'=>'Sementara'], null, ['class' => $errors->has('jenis_karyawan') ? 'form-control is-invalid' : $errors->has('jenis_karyawan') ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'']) !!}
 	@if ($errors->has('jenis_karyawan'))

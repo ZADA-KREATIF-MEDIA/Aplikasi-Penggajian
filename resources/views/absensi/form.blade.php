@@ -14,7 +14,7 @@
 
 <div class="form-group">
     {!! Form::label('status', 'Status') !!}
-    {!! Form::select('status', ['Masuk'=>'Masuk', 'Ijin'=>'Ijin', 'Cuti'=>'Cuti', 'Alpa'=>'Alpa', 'Libur'=>'Libur'], null, ['class' => $errors->has('status') ? 'form-control is-invalid' : $errors->has('status') ? 'form-control is-invalid' : 'form-control']) !!}
+    {!! Form::select('status', ['Masuk'=>'Masuk', 'Ijin'=>'Ijin','Sakit'=>'Sakit'], null, ['class' => $errors->has('status') ? 'form-control is-invalid' : $errors->has('status') ? 'form-control is-invalid' : 'form-control']) !!}
     @if ($errors->has('status'))
     <span class="invalid-feedback">
         <strong>{{ $errors->first('status') }}</strong>

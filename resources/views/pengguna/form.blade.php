@@ -19,16 +19,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('image', 'Image') !!}
-    {!! Form::file('image', ['class' => $errors->has('image') ? 'form-control is-invalid' : $errors->has('image') ? 'form-control is-invalid' : 'form-control']) !!}
-    @if ($errors->has('image'))
-    <span class="invalid-feedback">
-        <strong>{{ $errors->first('image') }}</strong>
-    </span>
-    @endif
-</div>
-
-<div class="form-group">
     {!! Form::label('roles', 'Role') !!}
     {!! Form::select('roles[]', ['admin'=>'admin', 'karyawan'=>'karwayan'], isset($row) ? $row->roles->pluck('name','name') : null, ['class' => $errors->has('roles') ? 'form-control is-invalid' : $errors->has('roles') ? 'form-control is-invalid' : 'form-control']) !!}
     @if ($errors->has('roles'))
