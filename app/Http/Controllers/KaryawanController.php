@@ -19,12 +19,6 @@ class KaryawanController extends Controller
     public function store(KaryawanRequest $request)
     {
         $requestData = $request->except('roles');
-        if ($request->file('image')) {
-            $destinationPath = public_path('upload/users/');
-            $fileName = time() . '-' . str_slug($request->name) .'.'. $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move($destinationPath, $fileName);
-            $requestData['image'] = $fileName;
-        }
         $user = User::create($requestData);
         $user->assignRole('karyawan');
         return redirect()->route('karyawan.index');

@@ -24,7 +24,7 @@
 
 <div class="form-group">
     {!! Form::label('lama_lembur', 'Lama Lembur') !!}
-    {!! Form::select('lama_lembur', ['1'=>'1 Jam', '2'=>'2 Jam'], null, ['class' => $errors->has('lama_lembur') ? 'form-control is-invalid' : $errors->has('lama_lembur') ? 'form-control is-invalid' : 'form-control', 'placeholder'=> '']) !!}
+    {!! Form::select('lama_lembur', ['1'=>'1 Jam', '2'=>'2 Jam', '3'=>'3 Jam', '4'=>'4 Jam', '5'=>'5 Jam', '6'=>'6 Jam', '7'=>'7 Jam', '8'=>'8 Jam'], null, ['class' => $errors->has('lama_lembur') ? 'form-control is-invalid' : $errors->has('lama_lembur') ? 'form-control is-invalid' : 'form-control', 'placeholder'=> '']) !!}
     @if ($errors->has('lama_lembur'))
     <span class="invalid-feedback">
         <strong>{{ $errors->first('lama_lembur') }}</strong>

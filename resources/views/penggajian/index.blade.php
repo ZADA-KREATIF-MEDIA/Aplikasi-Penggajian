@@ -75,13 +75,6 @@
                             Nodata
                             @endforelse
                         </tbody>
-                        <tfoot>
-                            <th>id</th>
-                            <th>nip karyawan (nama)</th>
-                            <th>tanggal</th>
-                            <th>periode</th>
-                            <th>Aksi</th>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

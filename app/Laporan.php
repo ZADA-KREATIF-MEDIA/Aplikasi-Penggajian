@@ -13,7 +13,6 @@ class Laporan extends Model
 		'gapok',
 		'tunjangan',
 		'lembur',
-		'pinjaman',
 		'pph',
 		'bpjs',
 		'gaji_bersih',

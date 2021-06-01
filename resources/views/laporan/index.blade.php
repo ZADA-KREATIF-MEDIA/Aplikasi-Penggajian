@@ -68,14 +68,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>no</th>
-                                <th>name</th>
-                                <th>tanggal</th>
-                                <th>gaji bersih</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

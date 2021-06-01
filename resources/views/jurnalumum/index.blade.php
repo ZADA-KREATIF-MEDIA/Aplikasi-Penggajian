@@ -67,14 +67,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Tanggal</th>
-                                <th>Keterangan</th>
-                                <th>Debit</th>
-                                <th>Kredit</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

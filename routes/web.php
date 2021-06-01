@@ -30,7 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('karyawan', 'KaryawanController');
     Route::resource('absensi', 'AbsensiController');
-    // Route::resource('pinjaman', 'PinjamanController');
     Route::resource('lembur', 'LemburController');
     Route::resource('penggajian', 'PenggajianController');
     Route::resource('slipgaji', 'SlipGajiController');

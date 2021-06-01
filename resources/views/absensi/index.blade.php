@@ -52,6 +52,7 @@
                                 <th>status</th>
                                 <th>jam masuk</th>
                                 <th>jam keluar</th>
+                                <th>keterangan</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -64,25 +65,14 @@
                                     <td class="desc">{{ $row->status }}</td>
                                     <td>{!! $row->jam_masuk !!}</td>
                                     <td>{!! $row->jam_keluar !!}</td>
+                                    <td>{!! $row->keterangan !!}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detailabsensiModal{!!$row->id!!}"><i class="fa fa-eye"></i></button>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editabsensiModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusabsensiModal{!!$row->id!!}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>id</th>
-                                <th>nip karyawan (nama)</th>
-                                <th>tanggal</th>
-                                <th>status</th>
-                                <th>jam masuk</th>
-                                <th>jam keluar</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>
@@ -112,49 +102,6 @@
         </div>
     </div>
     @foreach ($absensi as $key => $row)
-    <div class="modal fade" id="detailabsensiModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="largemodalLabel">Detail absensi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nipDetail">NIP</label>
-                        <input type="text" class="form-control" id="nipDetail" value="{!! $row->user->nip !!}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="namaDetail">Nama</label>
-                        <input type="text" class="form-control" id="namaDetail" value="{{!! $row->user->name !!}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggalDetail">Tanggal</label>
-                        <input type="text" class="form-control" id="tanggalDetail" value="{{!! $row->tanggal !!}}" readonly> 
-                    </div>
-                    <div class="row">
-                        <div class="form-group col">
-                            <label for="detailJamMasuk">Jam Masuk</label>
-                            <input type="text" class="form-control" id="detailJamMasuk" value="{{!! $row->jam_masuk !!}}" readonly>
-                        </div>
-                        <div class="form-group col">
-                            <label for="detailJamKeluar">Jam Keluar</label>
-                            <input type="text" class="form-control" id="detailJamKeluar" value="{{!! $row->jam_keluar !!}}" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="detailKeterangan">Keterangan</label>
-                        <input type="text" class="form-control" id="detailKeterangan" value="{{ $row->keterangan }}" readonly>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="editabsensiModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="largemodalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

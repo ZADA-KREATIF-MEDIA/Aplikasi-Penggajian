@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Penggajian extends Model
 {
     protected $fillable = [
-        'user_id', 'status', 'tanggal', 'besar_pinjaman', 'keterangan'
+        'user_id', 'status', 'tanggal', 'keterangan'
     ];
 
     public function user()

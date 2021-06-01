@@ -50,9 +50,7 @@
                                 <th>No</th>
                                 <th>NIP Karyawan</th>
                                 <th>Nama</th>
-                                <th>Jenis Karyawan</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Status</th>
                                 <th>Agama</th>
                                 <th>Aksi</th>
                             </tr>
@@ -63,9 +61,7 @@
                                 <td>{!! $key+1 !!}</td>
                                 <td>{!! $row->nip !!}</td>
                                 <td>{!! $row->name !!}</td>
-                                <td>{!! $row->jenis_karyawan !!}</td>
                                 <td>{!! $row->jk !!}</td>
-                                <td>{!! $row->status !!}</td>
                                 <td>{!! $row->agama !!}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editKaryawanModal{!!$row->id!!}"><i class="fa fa-edit"></i></button>
@@ -74,18 +70,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>NIP Karyawan</th>
-                                <th>Nama</th>
-                                <th>Jenis Karyawan</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Status</th>
-                                <th>Agama</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                         <a href="{{ url('/sampah-pengguna') }}" class="btn btn-danger btn-sm float-left text-uppercase" ><i class="fa fa-trash"></i>Sampah </a>
                     </table>
                 </div><!-- /.card-body -->

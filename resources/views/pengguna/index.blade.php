@@ -69,16 +69,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>no</th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>role</th>
-                                <th>created at</th>
-                                <th>aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

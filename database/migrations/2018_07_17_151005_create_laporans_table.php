@@ -21,7 +21,6 @@ class CreateLaporansTable extends Migration
             $table->integer('gapok'); 
             $table->integer('tunjangan'); 
             $table->integer('lembur'); 
-            $table->integer('pinjaman'); 
             $table->integer('pph'); 
             $table->integer('bpjs'); 
             $table->integer('gaji_bersih'); 

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'nik', 'image', 'nip', 'pendidikan', 'kota_lahir', 'tgl_lahir', 'tgl_masuk', 'jk', 'agama', 'status', 'alamat', 'foto', 'jenis_karyawan', 'divisi_id', 'jabatan_id'
+        'name', 'email', 'password', 'nik', 'image', 'nip', 'pendidikan', 'kota_lahir', 'tgl_lahir', 'jk', 'agama', 'alamat', 'jabatan_id'
     ];
 
     protected $dates = ['deleted_at'];
@@ -55,10 +55,6 @@ class User extends Authenticatable
         return $this->hasMany(lembur::class);
     }
 
-    public function pinjaman()
-    {
-        return $this->hasMany(Pinjaman::class);
-    }
 
 
 }

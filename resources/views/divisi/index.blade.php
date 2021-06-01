@@ -63,13 +63,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

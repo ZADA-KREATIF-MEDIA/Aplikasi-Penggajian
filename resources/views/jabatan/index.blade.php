@@ -69,16 +69,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>nama jabatan</th>
-                                <th>gaji pokok</th>
-                                <th>tunjangan</th>
-                                <th>lembur (per jam)</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div><!-- /.card-body -->
             </div>

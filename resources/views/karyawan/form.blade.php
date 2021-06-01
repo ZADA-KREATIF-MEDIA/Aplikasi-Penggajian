@@ -1,6 +1,6 @@
 <div class="form-group">
 	{!! Form::label('nip', 'Nip Karyawan') !!}
-	{!! Form::text('nip', null, ['class' => $errors->has('nip') ? 'form-control is-invalid' : $errors->has('nip') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nip Karyawan', 'maxlength'=>16]) !!}
+	{!! Form::text('nip', null, ['class' => $errors->has('nip') ? 'form-control is-invalid' : $errors->has('nip') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nip Karyawan', 'maxlength'=>8]) !!}
 	@if ($errors->has('nip'))
 	<span class="text-danger">
 		<strong>{{ $errors->first('nip') }}</strong>
@@ -48,15 +48,6 @@
 	@endif
 </div>
 
-<div class="form-group">
-	{!! Form::label('tgl_masuk', 'Tanggal Masuk') !!}
-	{!! Form::date('tgl_masuk', \Illuminate\Support\Carbon::now(), ['class' => $errors->has('tgl_masuk') ? 'form-control is-invalid' : $errors->has('tgl_masuk') ? 'form-control is-invalid' : 'form-control']) !!}
-	@if ($errors->has('tgl_masuk'))
-	<span class="text-danger">
-		<strong>{{ $errors->first('tgl_masuk') }}</strong>
-	</span>
-	@endif
-</div>
 
 <div class="form-group">
 	{!! Form::label('jk', 'Jenis Kelamin') !!}
@@ -79,16 +70,6 @@
 </div>
 
 <div class="form-group">
-	{!! Form::label('status', 'Status') !!}
-	{!! Form::select('status', ['Menikah'=>'Menikah', 'Belum Menikah'=>'Belum Menikah'], isset($status) ? $karyawan->status : null, ['class' => $errors->has('status') ? 'form-control is-invalid' : $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'']) !!}
-	@if ($errors->has('status'))
-	<span class="text-danger">
-		<strong>{{ $errors->first('status') }}</strong>
-	</span>
-	@endif
-</div>
-
-<div class="form-group">
 	{!! Form::label('alamat', 'Alamat') !!}
 	{!! Form::textarea('alamat', null, ['class' => $errors->has('alamat') ? 'form-control is-invalid' : $errors->has('alamat') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Alamat', 'rows' => '3']) !!}
 	@if ($errors->has('alamat'))
@@ -96,27 +77,6 @@
 		<strong>{{ $errors->first('alamat') }}</strong>
 	</span>
 	@endif
-</div>
-
-<div class="form-group">
-	{!! Form::label('jenis_karyawan', 'Jenis Karyawan') !!}
-	{!! Form::select('jenis_karyawan', ['Tetap'=>'Tetap', 'Sementara'=>'Sementara'], null, ['class' => $errors->has('jenis_karyawan') ? 'form-control is-invalid' : $errors->has('jenis_karyawan') ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'']) !!}
-	@if ($errors->has('jenis_karyawan'))
-	<span class="text-danger">
-		<strong>{{ $errors->first('jenis_karyawan') }}</strong>
-	</span>
-	@endif
-</div>
-
-<div class="form-group">
-	{!! Form::label('divisi', 'Divisi') !!}
-	{!! Form::select('divisi_id', App\Divisi::pluck('name', 'id'), null, ['class' => $errors->has('divisi_id') ? 'form-control is-invalid' : $errors->has('divisi_id') ? 'form-control is-invalid' : 'form-control', 'placeholder'=>'']) !!}
-	@if ($errors->has('divisi_id'))
-	<span class="text-danger">
-		<strong>{{ $errors->first('divisi_id') }}</strong>
-	</span>
-	@endif
-
 </div>
 
 <div class="form-group">
