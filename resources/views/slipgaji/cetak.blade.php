@@ -23,9 +23,10 @@
 			<td> : </td>
 			<td>{!! $karyawan->nip !!}</td>
 			<td>
-				<label class="col-md-4">Divisi</label>
+				<label class="col-md-4">Jabatan</label>
 			<td> : </td>
-			<td>{!! $karyawan->divisi->name !!}</td>
+			<td>{!! $karyawan->jabatan->name !!}</td>
+			
 		</tr>
 		<tr>
 			<td>
@@ -33,10 +34,7 @@
 			</td>
 			<td> : </td>
 			<td>{!! $karyawan->name !!}</td>
-			<td>
-				<label class="col-md-4">Jabatan</label>
-			<td> : </td>
-			<td>{!! $karyawan->jabatan->name !!}</td>
+			
 		</tr>
 	</table>
 	<br>
@@ -88,7 +86,7 @@
 		</tr>
 		<tr>
 			<td>4.</td>
-			<td>Potongan Kehadiran</td>
+			<td>Potongan Kehadiran(26 hari - {{$masuk}} hari)</td>
 			<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok-($masuk*($karyawan->jabatan->gapok/26))) !!}</td>
 			<td></td>
 		</tr>

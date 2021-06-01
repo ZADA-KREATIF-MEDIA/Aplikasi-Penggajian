@@ -40,12 +40,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('divisi.index') }}" class="nav-link @yield('divisi')">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Divisi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('jabatan.index') }} " class="nav-link @yield('jabatan')">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Jabatan</p>
@@ -107,7 +101,7 @@
                     <a href="{{ route('roles.index') }}" class="nav-link @yield('role')">
                         <i class="nav-icon fas fa-user-shield"></i>
                         <p>
-                            Roles & Permission
+                            Level
                         </p>
                     </a>
                 </li>

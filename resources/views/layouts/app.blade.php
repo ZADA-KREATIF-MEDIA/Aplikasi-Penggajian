@@ -43,7 +43,7 @@
         @yield('content')
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2021 SKRIPSI (NAMA MAHASISWA) STMIK AKAKOM.</strong>
+            <strong>Copyright &copy; 2021 SKRIPSI (ILHAM PANGAT) STMIK AKAKOM.</strong>
             All rights reserved.
        
         </footer>

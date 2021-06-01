@@ -20,7 +20,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'Auth\LoginController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('divisi', 'DivisiController');
     Route::resource('jabatan', 'JabatanController');
     Route::resource('pengguna', 'PenggunaController');
 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Master Data | Role')
+@section('title','Master Data | Level')
 @section('role','active')
 @push('addon-style')
 <link rel="stylesheet" href="{{url('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -13,12 +13,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Role</h1>
+                    <h1 class="m-0">Level User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Data Role</li>
+                        <li class="breadcrumb-item active">Data Level</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title col-12">
-                        Data Role
+                        Data Level
                         <button class="btn btn-success btn-sm float-right text-uppercase" data-toggle="modal" data-target="#tambahRoleModal"><i class="fa fa-plus"></i>tambah</button>
                     </div>
                 </div><!-- /.card-header -->
@@ -80,7 +80,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Level</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,7 +102,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="largemodalLabel">Edit Role</h5>
+                    <h5 class="modal-title" id="largemodalLabel">Edit Level</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -123,7 +123,7 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticModalLabel">Hapus Role</h5>
+                    <h5 class="modal-title" id="staticModalLabel">Hapus Level</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

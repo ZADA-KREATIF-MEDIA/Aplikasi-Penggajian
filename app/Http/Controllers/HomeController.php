@@ -31,7 +31,6 @@ class HomeController extends Controller
         $data['jabatan'] = Jabatan::orderBy('id', 'desc')->get();*/
 
         $data['karyawan'] = User::role('karyawan')->count();
-        $data['divisi'] = Divisi::count();
         $data['jabatan'] = Jabatan::count();
 
         return view('home', $data);
