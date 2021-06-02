@@ -19,13 +19,14 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#">CV BANYU BIRU </a>
+        <div class="col-5 mx-auto bg-dark rounded">
+            <img src="images/logo.png" alt="logo" class="img-fluid">
+        </div>
+            <h3>CV BANYU BIRU </h3>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-               
-
                 {!! Form::open(['route'=>'login', 'method'=>'post']) !!}
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email" name="email">

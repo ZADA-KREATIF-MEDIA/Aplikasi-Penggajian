@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sampah-pengguna', 'KaryawanController@trash');
     Route::get('/user-restore/{id}', 'KaryawanController@restore');
     Route::get('/user-force-delete/{id}', 'KaryawanController@force_delete');
+    Route::get('/jurnalUmum/periode-dan-bulan','JurnalUmumController@laporan_periode')->name('laporan-periode');
 
     Route::resource('karyawan', 'KaryawanController');
     Route::resource('absensi', 'AbsensiController');

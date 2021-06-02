@@ -8,7 +8,7 @@
 <body onload="window.print()">
 	<center>
 		<div class="text-center">
-
+			<img src="{{ URL::to('/') }}/images/logo.png" alt="logo" style="width: 200px; background:black;">
 			<h3>CV BANYU BIRU</h3>
 			<h4>SLIP GAJI KARYAWAN</h4>
 		</div>
@@ -26,7 +26,7 @@
 				<label class="col-md-4">Jabatan</label>
 			<td> : </td>
 			<td>{!! $karyawan->jabatan->name !!}</td>
-			
+
 		</tr>
 		<tr>
 			<td>
@@ -34,7 +34,7 @@
 			</td>
 			<td> : </td>
 			<td>{!! $karyawan->name !!}</td>
-			
+
 		</tr>
 	</table>
 	<br>
@@ -86,7 +86,7 @@
 		</tr>
 		<tr>
 			<td>4.</td>
-			<td>Potongan Kehadiran(26 hari - {{$masuk}} hari)</td>
+			<td>Potongan Kehadiran(26 hari - {{$masuk}} hari = {{26-$masuk}} hari)</td>
 			<td align="right">Rp. {!! number_format($karyawan->jabatan->gapok-($masuk*($karyawan->jabatan->gapok/26))) !!}</td>
 			<td></td>
 		</tr>

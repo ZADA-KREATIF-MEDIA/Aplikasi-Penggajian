@@ -34,11 +34,12 @@
                 <div class="card-header">
                     <div class="card-title col-12">
                         Laporan Penggajian
-                        <form action="" method="post" class="float-right">
-                            <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                            <button class="btn btn-info btn-sm" type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
+                        <form action="{{ route('laporan-periode') }}" method="get" class="float-right">
+                            <label for="tanggal_awal">Tanggal Awal</label>
+                            <input type="date" name="tanggal_awal" class="">
+                            <label for="tanggal_akhir">Tanggal Akhir</label>
+                            <input type="date" name="tanggal_akhir" class="">
+                            <input type="submit" value="Cetak">
                         </form>
                     </div>
                 </div><!-- /.card-header -->
